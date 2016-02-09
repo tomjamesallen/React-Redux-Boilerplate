@@ -1,8 +1,8 @@
 var gulp = require('gulp');
 var config = require('../gulp-config.json').js;
 var browserify = require('browserify');
+var babelify = require('babelify');
 var watchify = require('watchify');
-var reactify = require('reactify');
 var source = require('vinyl-source-stream');
 var uglify = require('gulp-uglify');
 var streamify = require('gulp-streamify');
@@ -36,7 +36,9 @@ function scripts(watch) {
     bundler = watchify(bundler) 
   }
 
-  bundler.transform(reactify);
+  // bundler.transform(reactify);
+
+  bundler.transform(babelify);
 
   rebundle = function() {
     var stream = bundler.bundle();
