@@ -3,12 +3,11 @@ import { Link } from 'react-router';
 import transitionManager from '../transitionManager';
 
 // Create APP component.
-var About = React.createClass({
+export default React.createClass({
 
   // Transition hook.
   _transitionHookId: null,
   _transitionHook(call) {
-    console.log(call);
     setTimeout(function () {
       call.resolve();
     }, 500);
@@ -27,7 +26,6 @@ var About = React.createClass({
    * @return {object}
    */
   render() {
-    // console.log(this);
     return (
       <div className="about">
         <h2 className="about__heading">About</h2>
@@ -36,5 +34,3 @@ var About = React.createClass({
     );
   }
 });
-
-module.exports = About;
