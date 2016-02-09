@@ -1,7 +1,8 @@
 {
-  "name": "guessface-front-end",
+  "name": "@tomjamesallen/react-flux-boilerplate",
   "version": "0.0.2",
   "description": "",
+  "repository": "https://github.com/tomjamesallen/react-flux-boilerplate",
   "main": "src/app-main.js",
   "author": "tom allen <tomjamesallenweb@gmail.com>",
   "license": "ISC",
