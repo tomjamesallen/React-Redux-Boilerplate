@@ -1,0 +1,23 @@
+{
+  "js": {
+    "src": "./src/js/app-main.js",
+    "toWatch": [
+      "src/js/**"
+    ],
+    "outputFileName": "bundle.js",
+    "outputDir": "./dist/js"
+  },
+  "html": {
+    "src": "./src/index.html",
+    "outputFileName": "index.html",
+    "outputDir": "./dist/"
+  },
+  "scss": {
+    "src": "./src/scss/main.scss",
+    "toWatch": [
+      "src/scss/**"
+    ],
+    "outputFileName": "main.css",
+    "outputDir": "./dist/css"
+  }
+}

@@ -1,0 +1,18 @@
+// Scale base font sizing.
+// This will scale anything sized with EMs or REMs.
+html {
+
+  font-size: 80%;
+
+  @include bp(sm) {
+    font-size: 85%;
+  }
+
+  @include bp(med) {
+    font-size: 90%;
+  }
+
+  @include bp(lrg) {
+    font-size: 100%;
+  }
+}

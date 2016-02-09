@@ -1,0 +1,19 @@
+.btn {
+
+  display: inline-block;
+  cursor: pointer;
+  border: none;
+  outline: none;
+
+  &:active {
+    
+  }
+
+  &--block {
+    display: block;
+  }
+
+  &--secondary {
+    
+  }
+}

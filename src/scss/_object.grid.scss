@@ -1,0 +1,7 @@
+.grid {
+  @include clearfix;
+
+  &__col {
+    float: left;
+  }
+}

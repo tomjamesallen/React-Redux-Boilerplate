@@ -1,0 +1,28 @@
+// Type sizing and margins.
+body {
+  
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+}
+
+h1 {
+  font-size: $h1;
+}
+
+h2 {
+  font-size: $h2;
+  line-height: 1;
+}
+
+h3 {
+  font-size: $h3;
+}
+
+p {
+  font-size: $p;
+  margin-bottom: $p * 1.5;
+}
