@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import transitionManager from '../transitionManager';
 
-// Create APP component.
+// Create About component.
 export default React.createClass({
 
   // Transition hook.
@@ -22,7 +22,7 @@ export default React.createClass({
   },
 
   /**
-   * Render the APP component.
+   * Render the About component.
    * @return {object}
    */
   render() {
