@@ -1,9 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router';
-import transitionManager from '../transitionManager';
 
 // Create APP component.
 var App = React.createClass({
+
+  getInitialState() {
+    return {}
+  },
 
   /**
    * Render the APP component.
@@ -16,6 +19,7 @@ var App = React.createClass({
         <h1>Guess Face</h1>
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
+        {this.props.children ? React.cloneElement(this.props.children, {state: this.state}) : null}
       </div>
     );
   }
