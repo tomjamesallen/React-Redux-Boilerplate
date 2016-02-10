@@ -16,12 +16,12 @@
     "jsonfile": "^2.2.3",
     "keymirror": "^0.1.1",
     "minifyify": "^7.1.0",
+    "object-assign": "^4.0.1",
     "q": "^1.4.1",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "react-gsap-enhancer": "^0.2.1",
-    "react-router": "^1.0.3",
-    "underscore": "^1.8.3"
+    "react-router": "^1.0.3"
   },
   "devDependencies": {
     "babel": "^6.1.18",
@@ -48,6 +48,7 @@
     "gulp-uglify": "^1.5.1",
     "path": "^0.12.7",
     "require-dir": "^0.3.0",
+    "run-sequence": "^1.1.5",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.7.0"
   }

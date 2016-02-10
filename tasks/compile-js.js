@@ -36,8 +36,6 @@ function scripts(watch) {
     bundler = watchify(bundler) 
   }
 
-  // bundler.transform(reactify);
-
   bundler.transform(babelify);
 
   rebundle = function() {

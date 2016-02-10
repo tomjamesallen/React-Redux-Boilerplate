@@ -2,6 +2,7 @@ var gulp = require('gulp');
 
 var requireDir = require('require-dir');
 requireDir('./tasks');
+var runSequence = require('run-sequence');
 
 // Gulp needs to perform the following tasks:
 // * Compile front end assets - JS / CSS (requires watch)
@@ -17,6 +18,10 @@ requireDir('./tasks');
 //      - logo.png
 
 gulp.task('default', ['dev-server', 'watch']);
+
+gulp.task('default', function(callback) {
+  runSequence(['watch'],['dev-server'],callback);
+});
 
 gulp.task('watch', ['watch:js', 'watch:html', 'watch:scss']);
 
