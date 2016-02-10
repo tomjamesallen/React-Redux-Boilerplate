@@ -4,7 +4,10 @@ import { Link } from 'react-router';
 import AppStore from '../stores/AppStore';
 import AppActions from '../actions/AppActions';
 
-// Fetch state for AppStore.
+/**
+ * Fetch state for AppStore.
+ * @return {object} state
+ */
 function getAllState() {
   return AppStore.getState();
 };
@@ -47,6 +50,9 @@ export default React.createClass({
     );
   },
 
+  /**
+   * Example click handler, calling an action.
+   */
   _onClickExample() {
     AppActions.exampleAction();
   },
@@ -57,5 +63,6 @@ export default React.createClass({
   _onChange() {
     // Re-fetch App state on change.
     this.setState(getAllState());
-  },
+  }
+
 });

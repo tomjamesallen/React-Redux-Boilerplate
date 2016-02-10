@@ -14,8 +14,6 @@ const CHANGE_EVENT = 'change';
 // Get ENV.
 const ENV = process.env.NODE_ENV;
 
-console.log(ENV);
-
 function getInitialState() {
   return {
     
