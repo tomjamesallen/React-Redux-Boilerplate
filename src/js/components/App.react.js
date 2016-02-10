@@ -1,13 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-// import AppStore from '../stores/AppStore';
-// import AppActions from '../actions/AppActions';
+import AppStore from '../stores/AppStore';
+import AppActions from '../actions/AppActions';
 
 // Fetch state for AppStore.
 function getAllState() {
-  return {};
-  // return AppStore.getState();
+  return AppStore.getState();
 };
 
 export default React.createClass({
@@ -19,13 +18,13 @@ export default React.createClass({
   componentDidMount() {
 
     // Set up our change listener.
-    // AppStore.addChangeListener(this._onChange);
+    AppStore.addChangeListener(this._onChange);
   },
 
   componentWillUnmount() {
 
     // Remove change listener if un-mounting App.
-    // AppStore.removeChangeListener(this._onChange);
+    AppStore.removeChangeListener(this._onChange);
   },
 
   /**
@@ -33,7 +32,6 @@ export default React.createClass({
    * @return {object}
    */
   render() {
-    console.log(this);
     return (
       <div className="app-wrapper">
         <h1>React / Flux Boilerplate</h1>
@@ -41,8 +39,16 @@ export default React.createClass({
         {' '}
         <Link to="/about">About</Link>
         {this.props.children ? React.cloneElement(this.props.children, {state: this.state}) : null}
+        
+        <div>
+          <button onClick={this._onClickExample}>Action example</button>
+        </div>
       </div>
     );
+  },
+
+  _onClickExample() {
+    AppActions.exampleAction();
   },
 
   /**

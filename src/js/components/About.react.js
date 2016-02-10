@@ -5,21 +5,21 @@ import transitionManager from '../transitionManager';
 // Create About component.
 export default React.createClass({
 
-  // Transition hook.
-  _transitionHookId: null,
-  _transitionHook(call) {
-    setTimeout(function () {
-      call.resolve();
-    }, 500);
-  },
+  // Transition hook example.
+  // _transitionHookId: null,
+  // _transitionHook(call) {
+  //   setTimeout(function () {
+  //     call.resolve();
+  //   }, 500);
+  // },
   
-  componentDidMount() {
-    this._transitionHookId = transitionManager.registerHook(this._transitionHook);
-  },
+  // componentDidMount() {
+  //   this._transitionHookId = transitionManager.registerHook(this._transitionHook);
+  // },
 
-  componentWillUnmount() {
-    transitionManager.unregisterHook(this._transitionHookId);
-  },
+  // componentWillUnmount() {
+  //   transitionManager.unregisterHook(this._transitionHookId);
+  // },
 
   /**
    * Render the About component.
@@ -29,7 +29,7 @@ export default React.createClass({
     return (
       <div className="about">
         <h2 className="about__heading">About</h2>
-        <p>Guess face is a game where one guesses faces.</p>
+        <p>An about page</p>
       </div>
     );
   }
