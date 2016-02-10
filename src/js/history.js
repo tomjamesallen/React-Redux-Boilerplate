@@ -1,6 +1,6 @@
 import { createHistory, createHashHistory } from 'history';
 
-const useHash = true;
+const useHash = process.env.NODE_ENV === 'development' ? false : true;
 
 const history = useHash ?
   createHashHistory() :

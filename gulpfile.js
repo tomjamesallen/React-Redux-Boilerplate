@@ -6,17 +6,17 @@ var env = require('gulp-env');
 requireDir('./tasks');
 
 // Gulp needs to perform the following tasks:
-// * Compile front end assets - JS / CSS (requires watch)
+// * Compile front end assets - JS / CSS / HTML (requires watch)
 // 
 // Directory structure is as follows:
 // - src/
 //    - scss/
 //    - js/
+//    - index.html
 // - dist/
 //    - css/
 //    - js/
-//    - imgs/
-//      - logo.png
+//    - index.html
 
 // Setup env.
 gulp.task('set-env:development', function () {
