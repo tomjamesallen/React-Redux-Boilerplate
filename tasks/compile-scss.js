@@ -7,9 +7,10 @@ var autoprefixer = require('gulp-autoprefixer');
 var connect = require('gulp-connect');
 
 gulp.task('compile:scss', function () {
+  var ENV = process.env.NODE_ENV;
   return gulp.src(config.src)
     .pipe(sass({
-      // outputStyle: 'compressed'
+      outputStyle: ENV === 'development' ? 'expanded' : 'compressed'
     }).on('error', function (err) {
       console.log(err);
       this.emit('end');
@@ -21,6 +22,6 @@ gulp.task('compile:scss', function () {
     .pipe(connect.reload());
 });
 
-gulp.task('watch:scss', function () {
-  gulp.watch(config.toWatch, ['compile:scss']);
+gulp.task('watch:scss', ['compile:scss'], function () {
+  return gulp.watch(config.toWatch, ['compile:scss']);
 });

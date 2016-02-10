@@ -7,6 +7,8 @@ var source = require('vinyl-source-stream');
 var uglify = require('gulp-uglify');
 var streamify = require('gulp-streamify');
 var connect = require('gulp-connect');
+var envify = require('envify/custom');
+var gulpif = require('gulp-if');
 
 gulp.task('compile:js', function () {
   return scripts(false);
@@ -17,10 +19,11 @@ gulp.task('watch:js', function () {
 });
 
 function scripts(watch) {
+  var ENV = process.env.NODE_ENV;
   var bundler, rebundle;
 
   bundler = browserify(config.src, {
-    debug: true,
+    debug: ENV === 'development' ? true : false,
     cache: {},
     packageCache: {},
     fullPaths: watch,
@@ -32,11 +35,11 @@ function scripts(watch) {
     }
   });
 
-  if(watch) {
-    bundler = watchify(bundler) 
-  }
-
+  if (watch) bundler = watchify(bundler);
   bundler.transform(babelify);
+  bundler.transform(envify({
+    NODE_ENV: process.env.NODE_ENV
+  }));
 
   rebundle = function() {
     var stream = bundler.bundle();
@@ -47,7 +50,7 @@ function scripts(watch) {
 
     stream
       .pipe(source(config.outputFileName))
-      // .pipe(streamify(uglify()))
+      .pipe(streamify(gulpif(ENV === 'production', uglify())))
       .pipe(gulp.dest(config.outputDir))
       .pipe(connect.reload());
       
