@@ -16,7 +16,7 @@ requireDir('./tasks');
 //    - imgs/
 //      - logo.png
 
-gulp.task('default', ['compile-assets', 'dev-server', 'watch']);
+gulp.task('default', ['dev-server', 'watch']);
 
 gulp.task('watch', ['watch:js', 'watch:html', 'watch:scss']);
 
