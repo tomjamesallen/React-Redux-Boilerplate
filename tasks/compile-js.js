@@ -26,13 +26,7 @@ function scripts(watch) {
     debug: ENV === 'development' ? true : false,
     cache: {},
     packageCache: {},
-    fullPaths: watch,
-    shim: {
-      jQuery: {
-        path: './src/vendor/jquery-1.11.3.min.js',
-        exports: 'jQuery'
-      }
-    }
+    fullPaths: watch
   });
 
   if (watch) bundler = watchify(bundler);
