@@ -45,6 +45,9 @@
 // BASE
 // -~-~
 
+// Render the current bp to an element that can be picked up by JS.
+@import 'base.current-bp';
+
 // HTML Base Font Size | Set in % so that we can change EM/REM size globally.
 @import 'base.html-base-font-size';
 
