@@ -8,8 +8,8 @@ This boilerplate provides the following:
 
 * Default wiring for a store, actions and a dispatcher
 * Default components
-* Configured React-router
-* SCSS boilerplate, following BEM and ITCSS architecture
+* Configured [React-router][react-router]
+* Scss boilerplate, following BEM and ITCSS architecture
 * Gulp build scripts for HTML, SCSS and JS
 * Watchify configured for fast rebuilding of JS
 * Dev server with livereload
@@ -30,7 +30,7 @@ See `gulpfile.js` for more detail on which sub-tasks each top level task is runn
 
 Running `gulp build` will run all the build scripts and save the output to `/dist`. This entire folder can be deployed to your production server. These are static assets only, so they can be deployed to a static file server such as amazon s3, or github pages.
 
-
+[react-router]: https://github.com/reactjs/react-router
 [flux-examples]: https://github.com/facebook/flux/tree/master/examples
 [gulp]: https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md
 [redux]: http://redux.js.org/
