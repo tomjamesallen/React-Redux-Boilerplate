@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router';
+import Radium from 'radium';
+
 import transitionManager from '../transitionManager';
 
 // Create About component.
-export default React.createClass({
+export default Radium(React.createClass({
 
   // Transition hook example.
   // _transitionHookId: null,
@@ -34,4 +36,4 @@ export default React.createClass({
     );
   }
 
-});
+}));

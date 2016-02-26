@@ -42,8 +42,9 @@ export default Radium(React.createClass({
     return (
       <div style={styles.base}>
         <h2 style={styles.heading}>Reactive component</h2>
-        <p>I am currently {componentSize}px wide!</p>
-        <p>{componentSize > componentBreakpoint ? 'Large format' : 'Small format'}</p>
+        <p>Using <code>react-component-width-mixin</code> and <code>Radium</code> to change styles based on the current width of the component.</p>
+        <p>I am currently {componentSize}px wide.</p>
+        <p><code>{componentSize > componentBreakpoint ? 'Component > Breakpoint' : 'Component <= Breakpoint'}</code></p>
       </div>
     );
   }
