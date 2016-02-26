@@ -1,6 +1,6 @@
 {
   "name": "@tomjamesallen/react-flux-boilerplate",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "",
   "repository": "https://github.com/tomjamesallen/react-flux-boilerplate",
   "main": "src/app-main.js",
