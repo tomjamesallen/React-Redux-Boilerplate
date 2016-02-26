@@ -36,6 +36,7 @@ function scripts(watch) {
   }));
 
   rebundle = function() {
+    console.log('Rebundling JS');
     var stream = bundler.bundle();
     stream.on('error', function (err) {
       console.log(err);
