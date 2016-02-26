@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router';
+import Radium from 'radium';
 
 import AppStore from '../stores/AppStore';
 import AppActions from '../actions/AppActions';
+
+import ReactiveComponent from './ReactiveComponent.react';
 
 /**
  * Fetch state for AppStore.
@@ -12,7 +15,7 @@ function getAllState() {
   return AppStore.getState();
 };
 
-export default React.createClass({
+export default Radium(React.createClass({
 
   getInitialState() {
     return getAllState();
@@ -35,8 +38,16 @@ export default React.createClass({
    * @return {object}
    */
   render() {
+
+    var styles = {
+      base: {
+        width: '80%',
+        margin: '0 auto'
+      }
+    };
+
     return (
-      <div className="app-wrapper">
+      <div style={styles.base}>
         <h1>React / Flux Boilerplate</h1>
         <Link to="/">Home</Link>
         {' '}
@@ -46,6 +57,8 @@ export default React.createClass({
         <div>
           <button onClick={this._onClickExample}>Action example</button>
         </div>
+
+        <ReactiveComponent />
       </div>
     );
   },
@@ -65,4 +78,4 @@ export default React.createClass({
     this.setState(getAllState());
   }
 
-});
+}));
