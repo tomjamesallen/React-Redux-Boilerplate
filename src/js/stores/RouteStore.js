@@ -4,44 +4,42 @@ import EventEmitter from 'events'
 
 // Helpers.
 import assign from 'object-assign'
-// import jsonAjaxHelper from '../helpers/jsonAjaxHelper'
 
 // Constants.
-import ActionTypes from '../constants/ActionTypes'
 const CHANGE_EVENT = 'change'
-
-// Stores.
-import RouteStore from './RouteStore'
-
-// Get ENV.
-// const ENV = process.env.NODE_ENV
 
 function getInitialState() {
   return {
-    dataReady: true
+    route: {}
   }
 }
 
 // Create state var and set to initial state.
 var state = getInitialState()
 
+/**
+ * Update the current route.
+ */
+function onRouteUpdated(location, params) {
+  state.route = {
+    location,
+    params
+  }
+
+  RouteStore.emitChange()
+}
 
 /**
  * Create and export the AppAppStore.
  */
-var AppStore = assign({}, EventEmitter.prototype, {
+var RouteStore = assign({}, EventEmitter.prototype, {
 
   /**
    * Get the full game state.
    * @return {object}
    */
-  getState() {
-    return state
-  },
-
-
-  isDataReady() {
-    return state.dataReady
+  getRoute() {
+    return state.route
   },
 
   /**
@@ -69,16 +67,14 @@ var AppStore = assign({}, EventEmitter.prototype, {
 /**
  * Register callback to handle all updates.
  */
-AppDispatcher.register(function(action) {
-  AppDispatcher.waitFor([RouteStore.dispatchToken])
+RouteStore.dispatchToken = AppDispatcher.register((action) => {
   switch (action.actionType) {
-    case ActionTypes.EXAMPLE_ACTION:
-      console.log('Action Fired:', ActionTypes.EXAMPLE_ACTION)
-
+    case 'onRouteUpdated':
+      onRouteUpdated(action.location, action.params)
       break
 
     default:
   }
 })
 
-export default AppStore
+export default RouteStore

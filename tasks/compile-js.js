@@ -9,6 +9,29 @@ var streamify = require('gulp-streamify');
 var connect = require('gulp-connect');
 var envify = require('envify/custom');
 var gulpif = require('gulp-if');
+var size = require('gulp-size');
+var eslint = require('gulp-eslint');
+var runSequence = require('run-sequence');
+
+gulp.task('compile:jshint', function () {
+  return gulp.src(config.toWatch)
+    .pipe(eslint())
+    .pipe(eslint.format());;
+});
+
+gulp.task('watch:jshint', function () {
+  return gulp.watch(config.toWatch)
+    .on('change', function (file) {
+      console.log(`Hinting: ${file.path}`);
+      return gulp.src(file.path)
+        .pipe(eslint())
+        .pipe(eslint.format())
+    })
+});
+
+gulp.task('compile:watch:jshint', function (callback) {
+  runSequence('compile:jshint', 'watch:jshint', callback);
+});
 
 gulp.task('compile:js', function () {
   return scripts(false);
@@ -36,7 +59,7 @@ function scripts(watch) {
   }));
 
   rebundle = function() {
-    console.log('Rebundling JS');
+    console.log('rebundling');
     var stream = bundler.bundle();
     stream.on('error', function (err) {
       console.log(err);
@@ -47,7 +70,8 @@ function scripts(watch) {
       .pipe(source(config.outputFileName))
       .pipe(streamify(gulpif(ENV === 'production', uglify())))
       .pipe(gulp.dest(config.outputDir))
-      .pipe(connect.reload());
+      .pipe(connect.reload())
+      .pipe(size());
       
     return stream;
   };

@@ -1,81 +1,63 @@
-import React from 'react';
-import { Link } from 'react-router';
-import Radium from 'radium';
+import React, { PropTypes } from 'react'
+import { Link } from 'react-router'
+import Radium from 'radium'
 
-import AppStore from '../stores/AppStore';
-import AppActions from '../actions/AppActions';
+import ConnectToStores from '../mixins/ConnectToStores'
+import AppStore from '../stores/AppStore'
+import RouteStore from '../stores/RouteStore'
+import AppActions from '../actions/AppActions'
 
-import ReactiveComponent from './ReactiveComponent.react';
+// import ReactiveComponent from './ReactiveComponent.react'
 
-/**
- * Fetch state for AppStore.
- * @return {object} state
- */
-function getAllState() {
-  return AppStore.getState();
-};
+function getState() {
+  return {
+    appState: AppStore.getState(),
+    route: RouteStore.getRoute()
+  }
+}
 
-export default Radium(React.createClass({
+var App = Radium(React.createClass({
 
-  getInitialState() {
-    return getAllState();
+  propTypes: {
+    children: PropTypes.object
   },
 
-  componentDidMount() {
-
-    // Set up our change listener.
-    AppStore.addChangeListener(this._onChange);
-  },
-
-  componentWillUnmount() {
-
-    // Remove change listener if un-mounting App.
-    AppStore.removeChangeListener(this._onChange);
-  },
+  mixins: [ConnectToStores([AppStore, RouteStore], getState)],
 
   /**
    * Render the App component.
    * @return {object}
    */
   render() {
-
     var styles = {
       base: {
         width: '80%',
         margin: '0 auto'
       }
-    };
+    }
 
     return (
       <div style={styles.base}>
         <h1>React / Flux Boilerplate</h1>
-        <Link to="/">Home</Link>
+        <Link to='/'>Home</Link>
         {' '}
-        <Link to="/about">About</Link>
+        <Link to='/about'>About</Link>
         {this.props.children ? React.cloneElement(this.props.children, {state: this.state}) : null}
-        
+
         <div>
           <button onClick={this._onClickExample}>Action example</button>
         </div>
-
-        <ReactiveComponent />
       </div>
-    );
+    )
   },
 
   /**
    * Example click handler, calling an action.
    */
   _onClickExample() {
-    AppActions.exampleAction();
-  },
-
-  /**
-   * Event handler for 'change' events coming from the GameStore
-   */
-  _onChange() {
-    // Re-fetch App state on change.
-    this.setState(getAllState());
+    AppActions.exampleAction()
   }
 
-}));
+}))
+
+export default App

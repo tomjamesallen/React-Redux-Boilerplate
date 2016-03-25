@@ -1,27 +1,17 @@
-import React from 'react';
-import { Link } from 'react-router';
-import Radium from 'radium';
+import React from 'react'
+// import { Link } from 'react-router'
+import Radium from 'radium'
 
-import transitionManager from '../transitionManager';
+import TransitionHook from '../mixins/TransitionHook'
+
+function transitionHook(call) {
+  call.resolve()
+}
 
 // Create About component.
-export default Radium(React.createClass({
+var About = Radium(React.createClass({
 
-  // Transition hook example.
-  // _transitionHookId: null,
-  // _transitionHook(call) {
-  //   setTimeout(function () {
-  //     call.resolve();
-  //   }, 500);
-  // },
-  
-  // componentDidMount() {
-  //   this._transitionHookId = transitionManager.registerHook(this._transitionHook);
-  // },
-
-  // componentWillUnmount() {
-  //   transitionManager.unregisterHook(this._transitionHookId);
-  // },
+  mixins: [ TransitionHook(transitionHook) ],
 
   /**
    * Render the About component.
@@ -29,11 +19,13 @@ export default Radium(React.createClass({
    */
   render() {
     return (
-      <div className="about">
-        <h2 className="about__heading">About</h2>
+      <div className='about'>
+        <h2 className='about__heading'>About</h2>
         <p>An about page</p>
       </div>
-    );
+    )
   }
 
-}));
+}))
+
+export default About
