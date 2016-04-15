@@ -58,7 +58,7 @@ gulp.task('build:staging', function (callback) {
   runSequence('clean', 'set-env:staging', 'compile-assets', callback);
 });
 gulp.task('build:production', function (callback) {
-  runSequence('clean', 'set-env:production', 'compile-assets', 'gzip', callback);
+  runSequence('clean', 'set-env:production', 'compile-assets', callback);
 });
 
 // Alias for production build.
