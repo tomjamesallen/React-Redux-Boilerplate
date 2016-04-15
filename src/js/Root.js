@@ -12,7 +12,7 @@ import About from './components/About.react'
 export default class Root extends Component {
   static propTypes = {
     history: PropTypes.object.isRequired
-  }
+  };
 
   render() {
     const { history } = this.props
