@@ -8,7 +8,7 @@ import React from 'react'
 // }
 
 // Create About component.
-var About = React.createClass({
+var Home = React.createClass({
 
   // mixins: [ TransitionHook(transitionHook) ],
 
@@ -24,13 +24,13 @@ var About = React.createClass({
    */
   render() {
     return (
-      <div className='about'>
-        <h2 className='about__heading'>About</h2>
-        <p>An about page</p>
+      <div className='home'>
+        <h2 className='home__heading'>Home</h2>
+        <p>A home page</p>
       </div>
     )
   }
 
 })
 
-export default About
+export default Home

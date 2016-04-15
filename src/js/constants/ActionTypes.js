@@ -1,7 +1,7 @@
-import keyMirror from 'keymirror';
+import keyMirror from 'keymirror'
 
 export default keyMirror({
 
   EXAMPLE_ACTION: null
 
-});
+})

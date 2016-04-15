@@ -1,0 +1,76 @@
+/*------------------------------------*\
+    $VARIABLES
+\*------------------------------------*/
+/**
+ * If you are building a non-responsive site but would still like to use
+ * csswizardry-grids, set this to ‘false’:
+ */
+$responsive:            true;
+
+
+/**
+ * Is this build mobile first? Setting to ‘true’ means that all grids will be
+ * 100% width if you do not apply a more specific class to them.
+ */
+$mobile-first:          true;
+
+
+/**
+ * Set the spacing between your grid items.
+ */
+$gutter:                $unit;
+
+
+/**
+ * Would you like Sass’ silent classes, or regular CSS classes?
+ */
+$use-silent-classes:    false;
+
+
+/**
+ * Would you like push and pull classes enabled?
+ */
+$push:                  false;
+$pull:                  false;
+
+
+/**
+ * Using `inline-block` means that the grid items need their whitespace removing
+ * in order for them to work correctly. Set the following to true if you are
+ * going to achieve this by manually removing/commenting out any whitespace in
+ * your HTML yourself.
+ *
+ * Setting this to false invokes a hack which cannot always be guaranteed,
+ * please see the following for more detail:
+ *
+ * github.com/csswizardry/csswizardry-grids/commit/744d4b23c9d2b77d605b5991e54a397df72e0688
+ * github.com/csswizardry/inuit.css/issues/170#issuecomment-14859371
+ */
+$use-markup-fix:        false;
+
+
+/**
+ * Define your breakpoints. The first value is the prefix that shall be used for
+ * your classes (e.g. `.palm--one-half`), the second value is the media query
+ * that the breakpoint fires at.
+ */
+$grid-breakpoints: (
+  'sm' '(min-width: #{map-get($breakpoints, sm)})',
+  'med' '(min-width: #{map-get($breakpoints, med)})',
+  'lrg' '(min-width: #{map-get($breakpoints, lrg)})'
+);
+
+
+/**
+ * Define which namespaced breakpoints you would like to generate for each of
+ * widths, push and pull. This is handy if you only need pull on, say, desk, or
+ * you only need a new width breakpoint at mobile sizes. It allows you to only
+ * compile as much CSS as you need. All are turned on by default, but you can
+ * add and remove breakpoints at will.
+ *
+ * Push and pull shall only be used if `$push` and/or `$pull` and `$responsive`
+ * have been set to ‘true’.
+ */
+$breakpoint-has-widths: ('sm', 'med', 'lrg');
+// $breakpoint-has-push:   ('sm', 'med', 'lrg');
+// $breakpoint-has-pull:   ('sm', 'med', 'lrg');

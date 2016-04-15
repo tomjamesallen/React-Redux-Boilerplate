@@ -1,27 +1,26 @@
 // App imports.
-import AppDispatcher from '../dispatcher/AppDispatcher';
-import EventEmitter from 'events';
-import history from '../history';
+import AppDispatcher from '../dispatcher/AppDispatcher'
+import EventEmitter from 'events'
 
 // Helpers.
-import assign from 'object-assign';
-import jsonAjaxHelper from '../helpers/jsonAjaxHelper';
+import assign from 'object-assign'
+// import jsonAjaxHelper from '../helpers/jsonAjaxHelper'
 
 // Constants.
-import ActionTypes from '../constants/ActionTypes';
-const CHANGE_EVENT = 'change';
+import ActionTypes from '../constants/ActionTypes'
+const CHANGE_EVENT = 'change'
 
 // Get ENV.
-const ENV = process.env.NODE_ENV;
+// const ENV = process.env.NODE_ENV
 
 function getInitialState() {
   return {
-    
+    dataReady: true
   }
-};
+}
 
 // Create state var and set to initial state.
-var state = getInitialState();
+var state = getInitialState()
 
 
 /**
@@ -34,43 +33,48 @@ var AppStore = assign({}, EventEmitter.prototype, {
    * @return {object}
    */
   getState() {
-    return state;
+    return state
+  },
+
+
+  isDataReady() {
+    return state.dataReady
   },
 
   /**
    * Used in the functions above to trigger an update to the UI.
    */
   emitChange() {
-    this.emit(CHANGE_EVENT);
+    this.emit(CHANGE_EVENT)
   },
 
   /**
    * @param {function} callback
    */
   addChangeListener(callback) {
-    this.on(CHANGE_EVENT, callback);
+    this.on(CHANGE_EVENT, callback)
   },
 
   /**
    * @param {function} callback
    */
   removeChangeListener(callback) {
-    this.removeListener(CHANGE_EVENT, callback);
+    this.removeListener(CHANGE_EVENT, callback)
   }
-});
+})
 
 /**
  * Register callback to handle all updates.
  */
 AppDispatcher.register(function(action) {
-  switch(action.actionType) {
+  switch (action.actionType) {
     case ActionTypes.EXAMPLE_ACTION:
-      console.log('Action Fired:', ActionTypes.EXAMPLE_ACTION);
-      
-      break;      
+      console.log('Action Fired:', ActionTypes.EXAMPLE_ACTION)
+
+      break
 
     default:
   }
-});
+})
 
-export default AppStore;
+export default AppStore

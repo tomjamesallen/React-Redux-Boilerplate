@@ -12,6 +12,9 @@
 // Sizing | Standard units and breakpoint values.
 @import 'settings.sizing';
 
+// Grid | Grid setup.
+@import 'settings.grid';
+
 // Type sizing | Type size variables.
 @import 'settings.type-sizing';
 
@@ -57,11 +60,22 @@
 // Typography | Headings, paragraph etc. Font size, line height, margin.
 @import 'base.typography';
 
+// Tables.
+@import 'base.tables';
+
+// Base image styling.
+@import 'base.images';
+
 // Link styling | Link color and decoration.
 @import 'base.link-styling';
 
 // Layout | Basic layout.
 @import 'base.layout';
+
+// Background colors etc.
+@import 'base.page-colors';
+
+
 
 
 
