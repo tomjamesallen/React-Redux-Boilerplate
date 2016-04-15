@@ -1,0 +1,15 @@
+// Named breakpoints.
+$breakpoints: (
+  sm: 500px,
+  med: 800px,
+  lrg: 1055px
+);
+
+// Standard unit.
+$unit: 1rem;
+
+// Gutter size.
+$gutter: $unit;
+
+// Page max width.
+$page-max-width: 80rem;

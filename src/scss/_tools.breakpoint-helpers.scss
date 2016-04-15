@@ -1,0 +1,61 @@
+// Mixin to respond to a given breakpoint.
+// Mobile first, uses min-width.
+@mixin bp($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: #{map-get($breakpoints, $breakpoint)}) {
+      @content;
+    }
+  }
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Please make sure it is defined in `$breakpoints` map.";
+  }
+}
+
+@mixin max-bp($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (max-width: #{map-get($breakpoints, $breakpoint) - 1px}) {
+      @content;
+    }
+  }
+ 
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Please make sure it is defined in `$breakpoints` map.";
+  }    
+}
+
+// Mixin for custom breakpoint values.
+// Mobile first, uses min-width and min-height.
+@mixin bp-custom($width: 0, $height: 0) {
+
+  // Check if we have both width and height, in which case we need to match 
+  // more than one condition.
+  @if $width != 0 and $height != 0 {
+    @if map-has-key($breakpoints, $width) {
+      $width: map-get($breakpoints, $width);
+    }
+    @media (min-width: $width) and (min-height: $height) {
+      @content;
+    }
+  }
+  // If not check if we have width.
+  @else if $width != 0 {
+    @if map-has-key($breakpoints, $width) {
+      $width: map-get($breakpoints, $breakpoint);
+    }
+    @media (min-width: $width) {
+      @content;
+    }
+  }
+  // Else check if we have height.
+  @else if $height != 0 {
+    @media (min-height: $height) {
+      @content;
+    }
+  }
+  // Else just include content.
+  @else {
+    @content;
+  }
+}

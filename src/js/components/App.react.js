@@ -40,7 +40,6 @@ var App = React.createClass({
    * @return {object}
    */
   render() {
-
     return (
       <div>
         <h1>React / Flux Boilerplate</h1>
@@ -53,7 +52,7 @@ var App = React.createClass({
           <button onClick={this._onClickExample}>Action example</button>
         </div>
 
-        {/*<ReactiveComponent />*/}
+        {/* <ReactiveComponent /> */}
       </div>
     )
   },

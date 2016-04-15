@@ -1,0 +1,10 @@
+.current-bp {
+  display: none;
+  content: 'no-bp';
+
+  @each $bp, $size in $breakpoints {
+    @include bp($bp) {
+      content: '#{$bp}';
+    }
+  }
+}

@@ -1,0 +1,15 @@
+.bem-example {
+  color: red;
+
+  &__element {
+    color: orange;
+
+    &--modifier {
+      color: purple;
+    }
+  }
+
+  &--modifier {
+    color: green;
+  }
+}
