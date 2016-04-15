@@ -1,43 +1,48 @@
 import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
-import Radium from 'radium'
 
 import ConnectToStores from '../mixins/ConnectToStores'
 import AppStore from '../stores/AppStore'
-import RouteStore from '../stores/RouteStore'
 import AppActions from '../actions/AppActions'
 
 // import ReactiveComponent from './ReactiveComponent.react'
 
 function getState() {
   return {
-    appState: AppStore.getState(),
-    route: RouteStore.getRoute()
+    appState: AppStore.getState()
   }
 }
 
-var App = Radium(React.createClass({
+var App = React.createClass({
 
   propTypes: {
-    children: PropTypes.object
+    children: PropTypes.object,
+    location: PropTypes.object.isRequired,
+    params: PropTypes.object.isRequired
   },
 
-  mixins: [ConnectToStores([AppStore, RouteStore], getState)],
+  childContextTypes: {
+    location: PropTypes.object,
+    params: PropTypes.object
+  },
+
+  getChildContext() {
+    return {
+      location: this.props.location,
+      params: this.props.params
+    }
+  },
+
+  mixins: [ConnectToStores([AppStore], getState)],
 
   /**
    * Render the App component.
    * @return {object}
    */
   render() {
-    var styles = {
-      base: {
-        width: '80%',
-        margin: '0 auto'
-      }
-    }
 
     return (
-      <div style={styles.base}>
+      <div>
         <h1>React / Flux Boilerplate</h1>
         <Link to='/'>Home</Link>
         {' '}
@@ -47,6 +52,8 @@ var App = Radium(React.createClass({
         <div>
           <button onClick={this._onClickExample}>Action example</button>
         </div>
+
+        {/*<ReactiveComponent />*/}
       </div>
     )
   },
@@ -58,6 +65,6 @@ var App = Radium(React.createClass({
     AppActions.exampleAction()
   }
 
-}))
+})
 
 export default App

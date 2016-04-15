@@ -9,8 +9,7 @@ This boilerplate provides the following:
 * Default wiring for a store, actions and a dispatcher
 * Default components
 * Configured [React-router][react-router]
-* ~~Scss boilerplate, following BEM and ITCSS architecture~~
-* [Radium][radium] - styling with JS
+* Scss boilerplate, following BEM and ITCSS architecture
 * [react-component-width-mixin][react-component-width-mixin]
 * Minimal Scss setup for convenience
 * Gulp build scripts for HTML, SCSS and JS
@@ -38,5 +37,4 @@ Running `gulp build` will run all the build scripts and save the output to `/dis
 [gulp]: https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md
 [redux]: http://redux.js.org/
 [fluxible]: http://fluxible.io/
-[radium]: http://stack.formidable.com/radium/
 [react-component-width-mixin]: https://www.npmjs.com/package/react-component-width-mixin

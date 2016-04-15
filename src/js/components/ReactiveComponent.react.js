@@ -1,55 +1,33 @@
 import React from 'react'
-import Radium from 'radium'
 import componentWidthMixin from 'react-component-width-mixin'
+import classNames from 'classnames'
 
-import ThemeColors from '../constants/ThemeColors'
-import SizingVars from '../constants/SizingVars'
-
-export default Radium(React.createClass({
+export default React.createClass({
 
   mixins: [componentWidthMixin],
-
-  contextTypes: {
-    history: React.PropTypes.object.isRequired
-  },
 
   /**
    * Render the App component.
    * @return {object}
    */
   render() {
-    var componentBreakpoint = 400
-    var componentSize = this.state.componentWidth
+    const { componentWidth } = this.state
+    const componentBreakpoint = 500
 
-    var styles = {
-      base: [{
-        padding: SizingVars.gutter,
-        marginTop: SizingVars.gutter,
-        border: `3px solid ${ThemeColors.primary}`,
-        backgroundColor: ThemeColors.secondary
-      }],
-      heading: [{
-        color: ThemeColors.primary
-      }]
-    }
-
-    if (componentSize > componentBreakpoint) {
-      styles.base.push({
-        backgroundColor: ThemeColors.primary
-      })
-      styles.heading.push({
-        color: ThemeColors.secondary
-      })
-    }
+    let classes = classNames(
+      this.constructor.displayName,
+      'reactive-component',
+      componentWidth > componentBreakpoint && 'reactive-component--lrg'
+    )
 
     return (
-      <div style={styles.base} className={this.constructor.displayName}>
-        <h2 style={styles.heading}>Reactive component</h2>
+      <div className={classes}>
+        <h2>Reactive component</h2>
         <p>Using <code>react-component-width-mixin</code> and <code>Radium</code> to change styles based on the current width of the component.</p>
-        <p>I am currently {componentSize}px wide.</p>
-        <p><code>{componentSize > componentBreakpoint ? 'Component > Breakpoint' : 'Component <= Breakpoint'}</code></p>
+        <p>I am currently {componentWidth}px wide.</p>
+        <p><code>{componentWidth > componentBreakpoint ? 'Component > Breakpoint' : 'Component <= Breakpoint'}</code></p>
       </div>
     )
   }
 
-}))
+})

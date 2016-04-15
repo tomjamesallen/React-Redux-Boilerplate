@@ -10,9 +10,6 @@ import assign from 'object-assign'
 import ActionTypes from '../constants/ActionTypes'
 const CHANGE_EVENT = 'change'
 
-// Stores.
-import RouteStore from './RouteStore'
-
 // Get ENV.
 // const ENV = process.env.NODE_ENV
 
@@ -70,7 +67,6 @@ var AppStore = assign({}, EventEmitter.prototype, {
  * Register callback to handle all updates.
  */
 AppDispatcher.register(function(action) {
-  AppDispatcher.waitFor([RouteStore.dispatchToken])
   switch (action.actionType) {
     case ActionTypes.EXAMPLE_ACTION:
       console.log('Action Fired:', ActionTypes.EXAMPLE_ACTION)
