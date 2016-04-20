@@ -4,7 +4,7 @@ var {{COMPONENT}} = React.createClass({
 
   render() {
     return (
-      <div>
+      <div className='{{COMPONENT_DASHED}}'>
         <h2>{{COMPONENT}}</h2>
       </div>
     )
