@@ -13,7 +13,6 @@
     "debounce": "^1.0.0",
     "extend": "^3.0.0",
     "flux": "^2.1.1",
-    "gsap": "^1.18.0",
     "gulp-react-tools": "^0.2.0",
     "history": "~1.13.x",
     "jsonfile": "^2.2.3",
