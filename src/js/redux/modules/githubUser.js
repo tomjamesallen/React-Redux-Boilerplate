@@ -18,12 +18,13 @@ export default function reducer(state = initialState, action = {}) {
         user: action.user
       })
     case RECEIVE_USER:
-      console.log(action)
-      const notFound = action.userData.message === 'Not Found'
+      const userData = action.userData.name
+                        ? action.userData
+                        : {}
       return assign({}, state, {
         isFetching: false,
         user: action.user,
-        userData: action.userData,
+        userData,
         lastUpdated: action.receivedAt,
         notFound
       })
