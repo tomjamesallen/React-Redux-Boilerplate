@@ -25,8 +25,7 @@ export default function reducer(state = initialState, action = {}) {
         isFetching: false,
         user: action.user,
         userData,
-        lastUpdated: action.receivedAt,
-        notFound
+        lastUpdated: action.receivedAt
       })
     default:
       return state

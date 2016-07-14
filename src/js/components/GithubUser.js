@@ -30,7 +30,28 @@ const Profile = ({
   </div>
 )
 
+Profile.propTypes = {
+  name: PropTypes.string,
+  avatar_url: PropTypes.string,
+  blog: PropTypes.string,
+  bio: PropTypes.string
+}
+
+Profile.defaultProps = {
+  name: '',
+  avatar_url: '',
+  blog: '',
+  bio: ''
+}
+
 class GithubUser extends Component {
+  static propTypes = {
+    fetchUser: PropTypes.func,
+    isFetching: PropTypes.bool,
+    user: PropTypes.string,
+    userData: PropTypes.object
+  }
+
   constructor(props) {
     super(props)
     this.handleChange = this.handleChange.bind(this)
@@ -65,7 +86,6 @@ class GithubUser extends Component {
         {(!isFetching && !userData.name) &&
           <div>Invalid user / error loading</div>
         }
-        
       </div>
     )
   }

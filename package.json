@@ -6,6 +6,21 @@
   "main": "src/app-main.js",
   "author": "tom allen <tomjamesallenweb@gmail.com>",
   "license": "ISC",
+  "scripts": {
+    "lint": "node_modules/gulp/bin/gulp.js compile:jshint",
+    "test": "jest && npm run lint",
+    "dev": "node_modules/gulp/bin/gulp.js",
+    "build": "node_modules/gulp/bin/gulp.js build",
+    "serveProduction": "node_modules/gulp/bin/gulp.js faux-production"
+  },
+  "jest": {
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react/",
+      "<rootDir>/node_modules/react-dom/",
+      "<rootDir>/node_modules/react-addons-test-utils/",
+      "<rootDir>/node_modules/enzyme/"
+    ]
+  },
   "dependencies": {
     "async-hook-manager": "^0.5.0",
     "browserify": "^12.0.2",
@@ -21,13 +36,13 @@
     "shallowequal": "^0.2.2"
   },
   "devDependencies": {
-    "gulp-react-tools": "^0.2.0",
     "babel": "^6.1.18",
     "babel-core": "^6.2.1",
     "babel-es6-polyfill": "^1.0.1",
     "babel-eslint": "^4.1.5",
-    "babel-preset-es2015": "^6.1.18",
-    "babel-preset-react": "^6.1.18",
+    "babel-jest": "^13.2.2",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.1.18",
     "babelify": "^7.2.0",
     "browserify": "^12.0.1",
@@ -53,11 +68,14 @@
     "gulp-minify-html": "^1.0.4",
     "gulp-notify": "^2.2.0",
     "gulp-pixrem": "^1.0.0",
+    "gulp-react-tools": "^0.2.0",
     "gulp-sass": "^2.1.1",
     "gulp-size": "^2.1.0",
     "gulp-streamify": "^1.0.2",
     "gulp-uglify": "^1.5.1",
+    "jest-cli": "^13.2.3",
     "path": "^0.12.7",
+    "react-addons-test-utils": "^15.2.1",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.1.5",
     "vinyl-source-stream": "^1.1.0",
