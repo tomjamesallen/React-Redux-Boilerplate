@@ -6,27 +6,26 @@ Please note, this setup only provides a client-side implementation of react/redu
 
 This boilerplate provides the following:
 
-* Default wiring react + redux
+* Default wiring of react + redux
 * Default components
 * Scss boilerplate, following BEM and ITCSS architecture
 * Gulp build scripts for HTML, SCSS and JS
 * Watchify configured for fast rebuilding of JS
 * Dev server with livereload
 
+For anything more advanced I would recommend [react-redux-universal-hot-example](https://github.com/erikras/react-redux-universal-hot-example).
+
 ## Getting started
-Download or clone the repo and run `npm install` (you will also need gulp [installed globally][gulp]). To start the server with livereload just run `gulp`.
+Download or clone the repo and run `npm install`. To start the server with livereload just run `npm run dev`.
 
-### Available gulp tasks
+### Available scripts
 
-* `gulp` - default task sets environment to development, starts the dev server, compiles assets, and watches for changes
-* `gulp build` or `gulp build:production` - build only, with environment set to production
-* `gulp faux-production` - same as default task, but with the environment set to production
-* `gulp build:development` - build only, with environment set to development
+* `npm run dev` - default task; sets environment to development, starts the dev server, compiles assets, and watches for changes
+* `npm run build` - build only, with environment set to production
+* `npm run serveProduction` - same as default task, but with the environment set to production
+* `npm run test` - run jest tests and eslint
 
-See `gulpfile.js` for more detail on which sub-tasks each top level task is running.
 
 ## Deployment
 
-Running `gulp build` will run all the build scripts and save the output to `/dist`. This entire folder can be deployed to your production server. These are static assets only, so they can be deployed to a static file server such as amazon s3, or github pages.
-
-[gulp]: https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md
+Running `npm run build` will run all the build scripts and save the output to `/dist`. This entire folder can be deployed to your production server. These are static assets only, so they can be deployed to a static file server such as amazon s3, or github pages.
