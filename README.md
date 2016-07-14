@@ -25,6 +25,8 @@ Download or clone the repo and run `npm install`. To start the server with liver
 * `npm run serveProduction` - same as default task, but with the environment set to production
 * `npm run test` - run jest tests and eslint
 
+### Dev server
+The dev server runs on port `8899`. `http://localhost:8899`
 
 ## Deployment
 
