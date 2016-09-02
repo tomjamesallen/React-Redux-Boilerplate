@@ -1,3 +1,4 @@
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Counter from '../components/Counter'
 import { increment } from '../redux/modules/counter'
@@ -7,11 +8,9 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    onClick: () => {
-      dispatch(increment())
-    }
-  }
+  return bindActionCreators({
+    onClick: increment
+  }, dispatch)
 }
 
 export default connect(

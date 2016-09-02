@@ -1,3 +1,4 @@
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import GithubUser from '../components/GithubUser'
 import { fetchUser } from '../redux/modules/githubUser'
@@ -7,11 +8,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchUser: (user) => {
-      fetchUser(user)(dispatch)
-    }
-  }
+  return bindActionCreators({ fetchUser }, dispatch)
 }
 
 export default connect(
