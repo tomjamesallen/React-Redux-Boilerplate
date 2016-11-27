@@ -3,7 +3,9 @@ import CounterContainer from '../containers/CounterContainer'
 import GithubUserContainer from '../containers/GithubUserContainer'
 import bemClassGenerator from 'bem-class-generator'
 
-const bem = bemClassGenerator('app')
+const bem = bemClassGenerator(__filename, {
+  customFileExtension: 'react.js'
+})
 
 const App = () => (
   <div className={bem()}>
